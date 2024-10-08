@@ -15,8 +15,9 @@ import java.util.List;
 @Table(name = "movies")
 public class Movies {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long movies_id;
+    @Column(nullable = false)
     private String movies_title;
     private String movies_description;
     private String director;
@@ -26,5 +27,11 @@ public class Movies {
     private List<Actor> actor;
 
     @ManyToMany
+    @JoinTable(
+            name = "genres",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
     private List<Genre> genres;
+
 }

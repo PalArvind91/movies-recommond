@@ -4,23 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Rating {
+@Entity
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ratingId;
+    private Long id;
 
-    @ManyToOne
-    private User user;
-
-    @ManyToOne
-    private Movies movies;
-
-    private Integer noveltyScore;
-    private Integer finalScore;
+    private String name;
 }
